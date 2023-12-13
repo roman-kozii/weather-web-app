@@ -1,60 +1,55 @@
 
-## Importer Data Prakiraan Cuaca BMKG
+## Weather Web appp
 
+PHP web app to import weather forecast data from BMKG, and add it to the MYSQL database, so that if you need to retrieve weather data you can query directly without having to query again to the BMKG server
 
+What do I do with this data?
 
-![Cuaca](https://data.bmkg.go.id/include/assets/img/cuaca.svg)
+My application can search for the nearest region from the table **t_region**, so that the weather displayed is according to the nearest region, on Android I created a SQLITE version and I query the nearest region from there, then take the weather data to the server.
 
-Script PHP untuk import data prakiraan cuaca dari BMKG, dan ditambahkan ke database MYSQL, sehingga untuk kebutuhan ambil data cuaca bisa langsung query tanpa harus rekues lagi ke server BMKG
+This script can be run in a browser or in the command line, but it's best to run it in the command line and use [crontab](https://crontab.guru/#0_3_*_*_*) so that it is executed at the specified time
 
-Apa yang saya lakukan dengan data ini?
+And remember, that you have to tell us if the data is from BMKG.
 
-Aplikasi saya bisa mencari wilayah terdekat dari table **t_wilayah**, sehingga cuaca yang ditampilkan sesuai wilayahnya terdekat, di Android saya buat versi SQLITE dan saya query wilayah terdekat dari situ, lalu ambil data cuacanya ke server.
+## Installation
 
-Script ini bisa dijalankan di Browser ataupun di command line, tapi bagusnya di commandline dan gunakan [crontab](https://crontab.guru/#0_3_*_*_*) agar dieksekusi tiap waktu yang ditentukan
+Copy **config.example.php** to **config.php**
+replace the contents with your database configuration
+import **bmkg.sql** into your database
+in the **bmkg.php** file at the bottom, **delete** the **git** section
+unless you want to host the data on Github too
 
-Dan ingat, bahwa anda harus memberitahukan jika datanya dari BMKG.
+# Use it directly?
 
-## Instalasi
-
-Copy **config.example.php** menjadi **config.php**
-ganti isinya dengan konfigurasi database anda
-impor **bmkg.sql** ke database anda
-pada file **bmkg.php** di paling bawah, **hapus** bagian **git**
-kecuali anda mau host datanya di Github juga
-
-# Pakai langsung?
-
-siapkan url endpoint
+prepare endpoint url
 ```https://ibnux.github.io/BMKG-importer/```
 
-dari aplikasi, unduh file wilayah.json
-```https://ibnux.github.io/BMKG-importer/cuaca/wilayah.json```
+from the app, download the region.json file
+```https://ibnux.github.io/BMKG-importer/cuaca/region.json```
 
-Dari json tersebut, kalkulasi lokasi user dengan wilayah terdekat, atau user pilih sendiri.
+From the json, calculate the user's location with the nearest area, or the user chooses himself.
 
-lalu download cuaca di wilayah yang dipilih berdasarkan kodenya
+then download the weather in the selected area based on the code
 ```https://ibnux.github.io/BMKG-importer/cuaca/idWilayah.json```
 
-contoh:
+example:
 ```https://ibnux.github.io/BMKG-importer/cuaca/501233.json```
 
-sesuaikan kode cuaca dengan icon di folder icon
+adjust the weather code with the icon in the icon folder
 ```https://ibnux.github.io/BMKG-importer/icon/5.png```
 
 
-# Contoh
-cek folder **contoh**
--  [HTML](contoh/html/)
--  [PHP](contoh/php/index.php)
+# Example
+check folder **examples**
+- [HTML](example/html/)
+- [PHP](example/php/index.php)
 
 
-#### Sumber
--  [BMKG](http://data.bmkg.go.id/prakiraan-cuaca/)
--  [ICON](http://www.iconarchive.com/tag/weather)
--  [Medoo](http://www.iconarchive.com/tag/weather)
+#### Source
+- [BMKG](http://data.bmkg.go.id/prakiraan-cuaca/)
+- [ICON](http://www.iconarchive.com/tag/weather)
+- [Medoo](http://www.iconarchive.com/tag/weather)
 
-Silahkan dimanfatkan untuk keperluan anda
 
-Salam
-Ibnu Maksum (@ibnux)
+
+Please use it for your needs
