@@ -1,5 +1,5 @@
 
-## Weather Web appp
+## Weather Web app
 
 PHP web app to import weather forecast data from BMKG, and add it to the MYSQL database, so that if you need to retrieve weather data you can query directly without having to query again to the BMKG server
 
